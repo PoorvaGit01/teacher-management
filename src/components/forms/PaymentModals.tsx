@@ -276,7 +276,7 @@ export const PaymentModal = ({ isOpen, onClose, course, teacher }: PaymentModalP
                       }`}
                       onClick={() => handleUPIProviderSelect(provider.id)}
                     >
-                      <div className="text-2xl mb-1">{provider.icon}</div>
+                      <img src={provider.icon} className="text-2xl mb-1"/>
                       <div className="text-sm font-medium">{provider.name}</div>
                     </div>
                   ))}

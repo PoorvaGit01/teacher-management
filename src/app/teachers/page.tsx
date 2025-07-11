@@ -52,8 +52,8 @@ export default function TeachersPage() {
   }
 
   return (
-    <div className="flex-1 space-y-6 p-6">
-      <div className="flex items-center justify-between">
+    <div className="flex-1 space-y-6 p-5 sm:p-6">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 ">
         <PageTitle
           title="Teacher"
           description="Manage your teaching staff and their information."
@@ -80,11 +80,11 @@ export default function TeachersPage() {
                   placeholder="Search teachers..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="pl-9"
+                  className="pl-9 max-sm:text-xs"
                 />
               </div>
               <Select value={roleFilter} onValueChange={setRoleFilter}>
-                <SelectTrigger className="w-[140px]">
+                <SelectTrigger className="w-[110px] sm:w-[140px]">
                   <Filter className="h-4 w-4 mr-2" />
                   <SelectValue placeholder="Status" />
                 </SelectTrigger>

@@ -1,11 +1,7 @@
 "use client";
 
 import React from "react";
-import {
-  Bell,
-  User,
-  ChevronDown,
-} from "lucide-react";
+import { Bell, User, ChevronDown } from "lucide-react";
 import { SidebarTrigger } from "../ui/sidebar";
 import { Button } from "../ui/button";
 import {
@@ -37,7 +33,7 @@ const Header: React.FC = () => {
   ];
 
   return (
-    <nav className="w-full bg-[#eb4034] dark:bg-[#eb4038] border-b border-orange-600 dark:border-orange-500 sticky top-0 z-40 shadow-lg">
+    <nav className="w-full bg-[#DCD0FF] dark:bg-[#9a78ff] border-b border-[#ae92ff] dark:border-[#ae92ff] sticky top-0 z-40 shadow-lg">
       <div className="flex items-center justify-between px-4 sm:px-6 h-16">
         <SidebarTrigger />
         <div className="flex items-center space-x-2 sm:space-x-3">
@@ -45,7 +41,7 @@ const Header: React.FC = () => {
             <DropdownMenuTrigger asChild>
               <Button
                 variant="ghost"
-                className="relative p-2 text-white hover:text-orange-100 hover:bg-white/10 rounded-md"
+                className="relative p-2 text-foreground hover:text-muted-foreground hover:bg-white/10 rounded-md"
                 aria-label="Notifications"
               >
                 <Bell size={20} />
@@ -69,12 +65,12 @@ const Header: React.FC = () => {
             <DropdownMenuTrigger asChild>
               <Button
                 variant="ghost"
-                className="flex items-center space-x-2 p-2 text-white hover:text-orange-100 hover:bg-white/10"
+                className="flex items-center space-x-2 p-2 text-foreground hover:text-muted-foreground hover:bg-white/10"
               >
                 <Avatar className="w-8 h-8">
                   <AvatarImage src={user.avatar || ""} alt={user.name} />
                   <AvatarFallback>
-                    <User size={16} className="text-orange-600" />
+                    <User size={16} className="text-foreground" />
                   </AvatarFallback>
                 </Avatar>
                 <span className="hidden sm:block text-sm font-medium">
@@ -82,7 +78,7 @@ const Header: React.FC = () => {
                 </span>
                 <ChevronDown
                   size={16}
-                  className="hidden sm:block text-orange-100"
+                  className="hidden sm:block text-foreground"
                 />
               </Button>
             </DropdownMenuTrigger>

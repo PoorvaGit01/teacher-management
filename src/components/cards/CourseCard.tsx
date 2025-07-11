@@ -19,26 +19,26 @@ export const CourseCard: React.FC<Props> = ({ course, teacher, enroll, teacherCl
 
   return (
     <div>
-    <Card className="p-4 space-y-3">
+    <Card className="p-4">
       <div className="flex justify-between items-start">
-        <h3 className="font-semibold text-lg text-gray-800">{course.title}</h3>
+        <h3 className="font-medium text-base ">{course.title}</h3>
         <Button variant="ghost" size="icon" onClick={() => share(course.id)}>
           <Share2 size={16} />
         </Button>
       </div>
-      <p className="text-sm text-gray-600">{course.description}</p>
+      <p className="text-sm ">{course.description}</p>
       <div className="flex flex-wrap gap-2">
         {course.topics.slice(0, 3).map((topic, idx) => (
           <Badge key={idx} variant="secondary" className="text-xs">{topic}</Badge>
         ))}
       </div>
-      <div className="flex items-center justify-between text-sm text-gray-500">
+      <div className="flex items-center justify-between text-sm">
         <span>${course.price}</span>
         <span>{course.totalStudents} students</span>
       </div>
       <div className="flex justify-between items-center">
         <Button onClick={() => enroll(course.id)} size="sm">Enroll</Button>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1">
           <Button variant="ghost" size="icon" onClick={() => teacherClick(teacher.id)}>
             <User size={16} />
           </Button>

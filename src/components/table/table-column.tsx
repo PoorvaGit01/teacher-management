@@ -41,7 +41,7 @@ export const createTeacherColumns = (
       return (
         <div className="flex flex-wrap gap-1">
           {subjects.map((subject, index) => (
-            <Badge key={index} variant="secondary" className="text-xs ">
+            <Badge key={index} variant="secondary" className="text-xs bg-gray-200 text-gray-600">
               {subject}
             </Badge>
           ))}

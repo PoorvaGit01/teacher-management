@@ -42,7 +42,7 @@ export const UPI_PROVIDERS: UPIProvider[] = [
   {
     id: 'googlepay',
     name: 'Google Pay',
-    icon: '🟢',
+    icon: 'https://pay.google.com/about/static_kcs/images/logos/google-pay-logo.svg',
     appPackage: 'com.google.android.apps.nbu.paisa.user',
     deepLink: 'googlepay://upi/pay'
   },

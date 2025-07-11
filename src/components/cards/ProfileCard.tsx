@@ -24,7 +24,7 @@ export const TeacherProfileCard = ({ teacher }: TeacherProfileCardProps) => {
   const experienceLevel = getExperienceLevel(teacher.experience)
 
   return (
-    <Card>
+    <Card className="h-full">
       <CardHeader className="text-center pb-4">
         <Avatar className="h-24 w-24 mx-auto mb-4">
           <AvatarImage src={teacher.avatar?.toString() || "/placeholder.svg"} alt={teacher.name} />

@@ -111,25 +111,18 @@ const CoursePage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <header className="bg-white border-b shadow-sm">
-        <div className="container mx-auto px-4 py-6 space-y-4">
+    <div className="min-h-screen">
+      <header className="">
+        <div className="container mx-auto px-4 sm:px-6 py-6 space-y-4">
           <div className="flex justify-between items-center">
-            <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">Explore Courses</h1>
-            <Badge variant="secondary" className="hidden sm:flex">
-              {filteredCourses.length} courses
-            </Badge>
+            <h1 className="text-2xl sm:text-3xl font-bold">Explore Courses</h1>
+            <Badge variant="secondary" className="hidden sm:flex">{filteredCourses.length} courses</Badge>
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4">
             <div className="relative flex-1">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 w-4 h-4" />
-              <Input 
-                value={searchQuery} 
-                onChange={e => setSearchQuery(e.target.value)} 
-                placeholder="Search courses..." 
-                className="pl-10" 
-              />
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4" />
+              <Input value={searchQuery} onChange={e => setSearchQuery(e.target.value)} placeholder="Search courses..." className="pl-10" />
             </div>
             
             <Select value={selectedCategory} onValueChange={setSelectedCategory}>
@@ -168,11 +161,11 @@ const CoursePage = () => {
         </div>
       </header>
 
-      <main className="container mx-auto px-4 py-8">
+      <main className="container mx-auto px-4 sm:px-6 py-8">
         {filteredCourses.length === 0 ? (
           <div className="text-center max-w-md mx-auto">
             <Card className="p-8">
-              <BookOpen className="w-12 h-12 mx-auto text-gray-400 mb-4" />
+              <BookOpen className="w-12 h-12 mx-auto " />
               <h3 className="text-lg font-medium mb-2">No courses found</h3>
               <p className="text-gray-500 mb-4">Try adjusting your search or filters.</p>
               <Button variant="outline" onClick={clearAllFilters}>
@@ -183,13 +176,8 @@ const CoursePage = () => {
         ) : (
           <>
             <div className="flex justify-between items-center mb-6">
-              <h2 className="text-lg font-semibold text-gray-900">
-                {searchQuery ? `Results for "${searchQuery}"` : "All Courses"}
-              </h2>
-              <div className="hidden sm:flex items-center text-sm text-gray-500">
-                <Filter className="w-4 h-4 mr-1" />
-                Sorted by {sortBy}
-              </div>
+              <h2 className="text-lg font-semibold ">{searchQuery ? `Results for "${searchQuery}"` : "All Courses"}</h2>
+              <div className="hidden sm:flex items-center text-sm"><Filter className="w-4 h-4 mr-1" />Sorted by {sortBy}</div>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -206,38 +194,37 @@ const CoursePage = () => {
               ))}
             </div>
 
-            <div className="text-center mt-12">
-              <Button variant="outline" size="lg">Load More Courses</Button>
+            <div className="text-center mt-8">
+              <Button variant="outline" size="lg" className="shadow-sm">Load More Courses</Button>
             </div>
           </>
         )}
       </main>
-
-      {/* Teachers Section */}
-      <section className="bg-white border-t">
-        <div className="container mx-auto px-4 py-12">
+      <section className=" border-t">
+        <div className="container mx-auto px-4 sm:px-6 py-12">
           <div className="text-center mb-8">
             <h2 className="text-2xl font-bold">Meet Our Expert Teachers</h2>
-            <p className="text-gray-600">Learn from certified educators</p>
+            <p className="text-sm">Learn from certified educators</p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {teachers.filter(t => t.status === "Active").slice(0, 6).map(t => (
               <TeacherCard key={t.id} teacher={t} onClick={handleAction.teacher} />
             ))}
           </div>
-          <div className="text-center mt-8">
-            <Button variant="outline" size="lg">View All Teachers</Button>
+          <div className="text-center mt-12">
+            <Button variant="outline" size="lg" className="shadow-sm">View All Teachers</Button>
           </div>
         </div>
       </section>
 
-      <section className="bg-gray-50 border-t">
-        <div className="container mx-auto px-4 py-12">
+      {/* Categories */}
+      <section className="border-t">
+        <div className="container mx-auto px-4 sm:px-6 py-12">
           <div className="text-center mb-8">
             <h2 className="text-2xl font-bold">Explore by Category</h2>
-            <p className="text-gray-600">Find courses in your area of interest</p>
+            <p className="text-sm">Find courses in your area of interest</p>
           </div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-5 md:gap-3">
             {categories.slice(1).map(cat => (
               <CategoryCard 
                 key={cat} 
