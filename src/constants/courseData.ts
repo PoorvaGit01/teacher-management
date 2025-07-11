@@ -1,4 +1,6 @@
-const courses = [
+import { Course } from "./types";
+
+export const courses: Course[] = [
   {
     id: "C001",
     title: "Advanced Mathematics - Calculus & Algebra",

@@ -1,49 +1,6 @@
 import teacherMale from '../../public/assets/teacher-male.jpg'
 import teacherFemale from '../../public/assets/teacher-female.jpg'
-import { StaticImageData } from 'next/image';
-
-type PrivateQualification = {
-  name: string;
-  rate: string;
-};
-
-type Achievements = {
-  title: string;
-  year: string;
-};
-
-type Address = {
-  type: string;
-  detail: string;
-};
-
-type Education = {
-  degree: string;
-  institution: string;
-  fieldOfStudy: string;
-  year: string;
-  grade?: string;
-};
-
-type Teacher = {
-  id: string;
-  avatar?: string | StaticImageData;
-  name: string;
-  role: string;
-  dob: string;
-  gender: "Male" | "Female" | "Other";
-  experience: number;
-  experties: string[];
-  address: Address[];
-  email: string;
-  phone: string;
-  privateQualifications: PrivateQualification[];
-  achivements?: Achievements[];
-  status: "Active" | "Inactive";
-  languagesSpoken: string[];
-  qualifications: string[];
-  education: Education[];
-};
+import { Teacher } from './types';
 
 export const teachers: Teacher[] = [
   {

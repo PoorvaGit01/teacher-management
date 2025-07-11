@@ -28,8 +28,8 @@ const menuItems = [
     icon: Users,
   },
   {
-    title: "Subjects",
-    url: "/subjects",
+    title: "Courses",
+    url: "/courses",
     icon: BookOpen,
   },
   {

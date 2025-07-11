@@ -37,7 +37,7 @@ import {
 } from "@/components/ui/select";
 import { TableSkeleton } from "@/components/common/TableSkeleton";
 import PageTitle from "@/components/common/PageTitle";
-import { teachers } from "@/constants/data";
+import { teachers } from "@/constants/teachersData";
 
 export default function TeachersPage() {
   const [searchTerm, setSearchTerm] = useState("");
