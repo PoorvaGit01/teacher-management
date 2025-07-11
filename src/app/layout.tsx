@@ -12,7 +12,7 @@ import { TeacherProvider } from "@/hooks/useTeachers";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Teacher Management System",
+  title: "EduManage",
   description: "Modern teacher management dashboard",
 };
 
