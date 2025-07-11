@@ -7,7 +7,6 @@ import { TableActions } from "./table-action";
 export const createTeacherColumns = (
   onDelete: (id: string) => void,
   onView?: (id: string) => void,
-  onEdit?: (id: string) => void
 ): ColumnDef<Teacher>[] => [
   {
     accessorKey: "name",
@@ -72,7 +71,6 @@ export const createTeacherColumns = (
           teacherId={row.original.id}
           onDelete={onDelete}
           onView={onView}
-          onEdit={onEdit}
         />
       </div>
     ),

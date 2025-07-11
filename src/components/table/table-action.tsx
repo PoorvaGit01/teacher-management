@@ -13,7 +13,6 @@ interface TeacherActionsProps {
   teacherId: string;
   onDelete: (id: string) => void;
   onView?: (id: string) => void;
-  onEdit?: (id: string) => void;
 }
 
 export const TableActions: React.FC<TeacherActionsProps> = ({
@@ -32,12 +31,6 @@ export const TableActions: React.FC<TeacherActionsProps> = ({
           <Link href={`/teachers/${teacherId}`}>
             <Eye className="mr-2 h-4 w-4" />
             View Details
-          </Link>
-        </DropdownMenuItem>
-        <DropdownMenuItem asChild>
-          <Link href={`/teachers/${teacherId}/edit`}>
-            <Edit className="mr-2 h-4 w-4" />
-            Edit
           </Link>
         </DropdownMenuItem>
         <DropdownMenuItem className="text-destructive">
