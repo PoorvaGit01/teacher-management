@@ -33,7 +33,7 @@ const Header: React.FC = () => {
   ];
 
   return (
-    <nav className="w-full bg-[#DCD0FF] dark:bg-[#9a78ff] border-b border-[#ae92ff] dark:border-[#ae92ff] sticky top-0 z-40 shadow-lg">
+    <nav className="w-full bg-card border-b sticky top-0 z-40 shadow-lg">
       <div className="flex items-center justify-between px-4 sm:px-6 h-16">
         <SidebarTrigger />
         <div className="flex items-center space-x-2 sm:space-x-3">

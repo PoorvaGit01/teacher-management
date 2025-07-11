@@ -49,21 +49,21 @@ export const UPI_PROVIDERS: UPIProvider[] = [
   {
     id: 'phonepe',
     name: 'PhonePe',
-    icon: '🟣',
+    icon: 'https://upload.wikimedia.org/wikipedia/commons/7/71/PhonePe_Logo.svg',
     appPackage: 'com.phonepe.app',
     deepLink: 'phonepe://upi/pay'
   },
   {
     id: 'paytm',
     name: 'Paytm',
-    icon: '🔵',
+    icon: 'https://img.icons8.com/?size=100&id=zB8j6RfneRmV&format=png&color=000000',
     appPackage: 'net.one97.paytm',
     deepLink: 'paytm://upi/pay'
   },
   {
     id: 'bhim',
     name: 'BHIM',
-    icon: '🔴',
+    icon: 'https://upload.wikimedia.org/wikipedia/en/6/65/BHIM_SVG_Logo.svg',
     appPackage: 'in.gov.uidai.bhim',
     deepLink: 'bhim://upi/pay'
   }

@@ -16,7 +16,7 @@ export const TeacherCard: FC<Props> = ({ teacher, onClick }) => {
       <div className="border-2 border-gray-400 inline-block w-fit mx-auto p-1 rounded-full">
         <Image src={teacher.avatar} alt={teacher.name} className="w-20 h-20 rounded-full mx-auto object-cover" />
       </div>
-      <div className="flex flex-col max-sm:items-center items-start gap-2 text-sm">
+      <div className="flex flex-col items-center gap-2 text-sm">
         <h3 className="font-bold text-lg capitalize">{teacher.name}</h3>
         <div className="flex items-center gap-2">
           <p className="font-semibold">{teacher.role}</p>

@@ -137,7 +137,7 @@ export const PaymentModal = ({ isOpen, onClose, course, teacher }: PaymentModalP
         return (
           <form onSubmit={form.handleSubmit(handleDetailsSubmit)} className="space-y-6">
             <div className="space-y-4">
-              <div>
+              <div className='grid gap-1'>
                 <Label htmlFor="studentName">Full Name *</Label>
                 <Input
                   id="studentName"
@@ -152,7 +152,7 @@ export const PaymentModal = ({ isOpen, onClose, course, teacher }: PaymentModalP
                 )}
               </div>
 
-              <div>
+              <div className='grid gap-1'>
                 <Label htmlFor="studentEmail">Email Address *</Label>
                 <Input
                   id="studentEmail"
@@ -168,7 +168,7 @@ export const PaymentModal = ({ isOpen, onClose, course, teacher }: PaymentModalP
                 )}
               </div>
 
-              <div>
+              <div className='grid gap-1'>
                 <Label htmlFor="studentPhone">Phone Number *</Label>
                 <Input
                   id="studentPhone"
@@ -186,7 +186,7 @@ export const PaymentModal = ({ isOpen, onClose, course, teacher }: PaymentModalP
 
             <Separator />
 
-            <div className="bg-gray-50 p-4 rounded-lg space-y-3">
+            <div className="p-4 rounded-lg space-y-3">
               <div className="flex justify-between items-center">
                 <span className="text-sm text-gray-600">Course Price</span>
                 <span className="text-sm line-through text-gray-500">
@@ -224,7 +224,6 @@ export const PaymentModal = ({ isOpen, onClose, course, teacher }: PaymentModalP
                 onClick={() => setStep('details')}
               >
                 <ArrowLeft className="h-4 w-4" />
-                Back
               </Button>
               <h3 className="text-lg font-semibold">Choose Payment Method</h3>
             </div>
@@ -235,7 +234,7 @@ export const PaymentModal = ({ isOpen, onClose, course, teacher }: PaymentModalP
                   key={method.id}
                   className={`border rounded-lg p-4 cursor-pointer transition-all ${
                     selectedMethod === method.id
-                      ? 'border-blue-500 bg-blue-50'
+                      ? 'border-blue-500 bg-card'
                       : 'border-gray-200 hover:border-gray-300'
                   }`}
                   onClick={() => handlePaymentMethodSelect(method.id)}
@@ -276,14 +275,14 @@ export const PaymentModal = ({ isOpen, onClose, course, teacher }: PaymentModalP
                       }`}
                       onClick={() => handleUPIProviderSelect(provider.id)}
                     >
-                      <img src={provider.icon} className="text-2xl mb-1"/>
+                      <img src={provider.icon} className="size-16 mx-auto"/>
                       <div className="text-sm font-medium">{provider.name}</div>
                     </div>
                   ))}
                 </div>
 
-                <div>
-                  <Label htmlFor="upiId">Or enter UPI ID</Label>
+                <div className='grid gap-1'>
+                  <Label htmlFor="upiId" className='capitalize'>Or enter UPI ID</Label>
                   <Input
                     id="upiId"
                     {...form.register('upiId')}
