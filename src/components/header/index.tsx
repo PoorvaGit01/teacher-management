@@ -97,7 +97,7 @@ const Header: React.FC = () => {
               </DropdownMenuLabel>
               <DropdownMenuSeparator />
               {DropdownMenuOptions?.map((opt) => (
-                <DropdownMenuItem>
+                <DropdownMenuItem key={opt.label}>
                   <User size={16} className="mr-2" /> {opt.label}
                 </DropdownMenuItem>
               ))}

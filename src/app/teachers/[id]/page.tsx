@@ -105,7 +105,7 @@ export default function TeacherDetailPage() {
               <div>
                 <h4 className="font-medium mb-2">Education</h4>
                 {teacher.education.map((tech) => (
-                    <p className="text-sm text-muted-foreground">
+                    <p className="text-sm text-muted-foreground"key={tech.year}>
                         {`${tech.degree} from ${tech.institution} in ${tech.year}`}
                     </p>
                 ))

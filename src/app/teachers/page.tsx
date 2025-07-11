@@ -1,17 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import {
-  Plus,
-  Search,
-  Filter,
-  MoreHorizontal,
-  Edit,
-  Trash2,
-  Eye,
-} from "lucide-react";
-import Link from "next/link";
-
+import { Plus, Search, Filter } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -21,13 +11,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 import {
   Select,
   SelectContent,
@@ -37,13 +20,20 @@ import {
 } from "@/components/ui/select";
 import { TableSkeleton } from "@/components/common/TableSkeleton";
 import PageTitle from "@/components/common/PageTitle";
-import { teachers } from "@/constants/teachersData";
+import { DataTable } from "@/components/table/data-table";
+import { useTeachers } from "@/hooks/use-teacher-data";
+import { createTeacherColumns } from "@/components/table/table-column";
 
 export default function TeachersPage() {
   const [searchTerm, setSearchTerm] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [showAddDialog, setShowAddDialog] = useState(false);
-  const [roleFilter, setRoleFilter] = useState('All')
+  const [roleFilter, setRoleFilter] = useState("All");
+  const { teachers, deleteTeacher } = useTeachers({
+    searchTerm,
+  });
+
+  const columns = createTeacherColumns(deleteTeacher);
 
   const filteredTeachers = teachers.filter((teacher) => {
     const lowerSearch = searchTerm.toLowerCase();
@@ -53,13 +43,9 @@ export default function TeachersPage() {
       teacher.email.toLowerCase().includes(lowerSearch) ||
       teacher.experties.some((sub) => sub.toLowerCase().includes(lowerSearch));
 
-    const matchedRole = roleFilter === "all" || teacher.role === roleFilter
+    const matchedRole = roleFilter === "all" || teacher.role === roleFilter;
     return matchesSearch;
   });
-
-  const handleDelete = (id: string) => {
-    console.log("Delete teacher:", id);
-  };
 
   if (isLoading) {
     return <TableSkeleton />;
@@ -110,108 +96,16 @@ export default function TeachersPage() {
               </Select>
             </div>
           </div>
-
           <div className="mt-6">
             <div className="rounded-md border">
               <div className="overflow-x-auto">
-                <table className="w-full">
-                  <thead>
-                    <tr className="border-b bg-muted/50">
-                      <th className="h-12 px-4 text-left align-middle font-medium text-muted-foreground">
-                        Teacher
-                      </th>
-                      <th className="h-12 px-4 text-left align-middle font-medium text-muted-foreground">
-                        Subject
-                      </th>
-                      <th className="h-12 px-4 text-left align-middle font-medium text-muted-foreground">
-                        Role
-                      </th>
-                      <th className="h-12 px-4 text-left align-middle font-medium text-muted-foreground">
-                        Experience
-                      </th>
-                      <th className="h-12 px-4 text-right align-middle font-medium text-muted-foreground">
-                        Actions
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {filteredTeachers?.map((teacher) => (
-                      <tr
-                        key={teacher.id}
-                        className="border-b transition-colors hover:bg-muted/50"
-                      >
-                        <td className="p-4">
-                          <div className="flex items-center space-x-3">
-                            <Avatar className="h-10 w-10">
-                              <AvatarImage
-                                src={teacher.avatar?.toString() || ""}
-                                alt={teacher.name}
-                              />
-                              <AvatarFallback>
-                                {teacher.name
-                                  .split(" ")
-                                  .map((n) => n[0])
-                                  .join("")}
-                              </AvatarFallback>
-                            </Avatar>
-                            <div>
-                              <div className="font-medium">{teacher.name}</div>
-                              <div className="text-sm text-muted-foreground">
-                                {teacher.email}
-                              </div>
-                            </div>
-                          </div>
-                        </td>
-                        <td className="p-4">
-                          {/* {teacher.experties} */}
-                          <div className="font-medium">
-                            {teacher.experties.join(", ")}
-                          </div>
-                        </td>
-                        <td className="p-4">
-                          <div>{teacher.role}</div>
-                        </td>
-                        <td className="p-4">
-                          <div className="text-sm">{teacher.experience}</div>
-                        </td>
-                        <td className="p-4 text-right">
-                          <DropdownMenu>
-                            <DropdownMenuTrigger asChild>
-                              <Button variant="ghost" className="h-8 w-8 p-0">
-                                <span className="sr-only">Open menu</span>
-                                <MoreHorizontal className="h-4 w-4" />
-                              </Button>
-                            </DropdownMenuTrigger>
-                            <DropdownMenuContent align="end">
-                              <DropdownMenuItem asChild>
-                                <Link href={`/teachers/${teacher.id}`}>
-                                  <Eye className="mr-2 h-4 w-4" />
-                                  View Details
-                                </Link>
-                              </DropdownMenuItem>
-                              <DropdownMenuItem asChild>
-                                <Link href={`/teachers/${teacher.id}/edit`}>
-                                  <Edit className="mr-2 h-4 w-4" />
-                                  Edit
-                                </Link>
-                              </DropdownMenuItem>
-                              <DropdownMenuItem
-                                onClick={() => handleDelete(teacher.id)}
-                                className="text-destructive"
-                              >
-                                <Trash2 className="mr-2 h-4 w-4" />
-                                Delete
-                              </DropdownMenuItem>
-                            </DropdownMenuContent>
-                          </DropdownMenu>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
+                <DataTable
+                  columns={columns}
+                  data={teachers}
+                  isLoading={isLoading}
+                />
               </div>
             </div>
-
             {filteredTeachers.length === 0 && (
               <div className="flex flex-col items-center justify-center py-12">
                 <div className="text-center">
