@@ -14,7 +14,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
-import { ThemeToggle } from "../ThemeToggle"
+import { ThemeToggle } from "./ThemeToggle"
 
 const menuItems = [
   {

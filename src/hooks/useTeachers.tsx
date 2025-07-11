@@ -3,6 +3,7 @@
 import React, { createContext, useContext, useReducer, ReactNode } from 'react'
 import { Teacher } from '@/constants/types'
 import { teachers as initialTeachers } from '@/constants/teachersData'
+import {format} from 'date-fns'
 
 interface TeacherContextType {
   teachers: Teacher[]
@@ -35,21 +36,21 @@ const teacherReducer = (state: TeacherState, action: TeacherAction): TeacherStat
             ? { ...teacher, ...action.payload.data }
             : teacher
         ),
-        lastUpdated: new Date().toISOString()
+        lastUpdated: format(new Date(), 'dd/MM/yyyy')
       }
     
     case 'DELETE_TEACHER':
       return {
         ...state,
         teachers: state.teachers.filter(teacher => teacher.id !== action.payload.id),
-        lastUpdated: new Date().toISOString()
+        lastUpdated: format(new Date(), 'dd/MM/yyyy')
       }
     
     case 'ADD_TEACHER':
       return {
         ...state,
         teachers: [...state.teachers, action.payload],
-        lastUpdated: new Date().toISOString()
+        lastUpdated: format(new Date(), 'dd/MM/yyyy')
       }
     
     case 'RESET_TEACHERS':
